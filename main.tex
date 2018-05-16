@@ -104,7 +104,7 @@
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
-\title[]{Lab \#4: Wi-Fi deauthentication attack \\  } % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[]{Lab \#4: WiFi Pineapple \\ Wi-Fi deauthentication attack \\  } % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Alexander Blaauwgeers} % Your name
 \institute[University of Amsterdam] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -135,93 +135,109 @@ University of Amsterdam \\ % Your institution for the title page
 % \end{block}
 % \end{frame}
 
-\begin{frame}{What is RDS?}
-Radio Data System
+\begin{frame}{Questions}
 
 \begin{itemize}
-    \item Allows to send data over FM radio
-    \item Multiple fields
-    \begin{itemize}
-        \item Most only flags or short identifiers
-    \end{itemize}
-    \item Radio Text field
-    \begin{itemize}
-        \item Allows for arbitrary 64-character strings
-    \end{itemize}
-    \item Traffic Message Channel
-    \begin{itemize}
-        \item Might be encoded
-    \end{itemize}
+    \item What can you do with the WiFi Pineapple?
+    \item What is a Wi-Fi deauthentication attack?
+    \item Can you preform an Wi-Fi deauthentication attack?
+\end{itemize}
+
+\begin{itemize}
+    \item How do you get the information? Probes?
+    \item Scenarios for an Wi-Fi deauthentication attack?
+    \item Can you use a Wi-Fi deauthentication attack as stepping stone?
 \end{itemize}
 \end{frame}
 
 %----------------------------------------------------------------------------------
 \section{Theory}
 %----------------------------------------------------------------------------------
-\begin{frame}{Theory}
+\begin{frame}{Theory - The concept behind the attack}
 \centering
-\begin{itemize}
-    \item Data is carried on a 57kHz subcarrier
-\end{itemize}
-
-\includegraphics[width=\textwidth]{fmspectrum.png}
+\includegraphics[width=135px]{dewifi.jpg}\footnote{\tiny{https://opensourceforu.com/2015/04/beware-it\%C2\%92s-easy-to-launch-a-wireless-deauthentication-attack/}}
 
 \end{frame}
 
 %----------------------------------------------------------------------------------
-\section{Receiving RDS}
-\begin{frame}[fragile]{Receiving RDS Signals}
-\begin{itemize}
-    \item GQRX allows to receive RDS channel information natively
-    \begin{itemize}
-        \item But only basic and interpreted information
-    \end{itemize}
-    \item \verb|redsea|
-    \begin{itemize}
-        \item Low level tool that can extract all raw RDS fields from \verb|rtl_fm| input
-    \end{itemize}
-\end{itemize}
+\section{Networks and associations}
+%----------------------------------------------------------------------------------
+\begin{frame}{Networks and associations}
+\centering
+\includegraphics[width=\textwidth]{recon1.png}
+\end{frame}
+
+\begin{frame}{Networks and associations}
+\centering
+\includegraphics[width=\textwidth]{JSONx.png}
 \end{frame}
 
 %----------------------------------------------------------------------------------
-\section{Transmitting RDS}
-
-\begin{frame}{Security}
-    \pause \centering None
+\section{Probe}
+%----------------------------------------------------------------------------------
+\begin{frame}{Probe}
+\centering
+\includegraphics[width=\textwidth]{probe.png}
 \end{frame}
 
-\begin{frame}{Transmitting RDS Signals}
+\begin{frame}{Probe Zoom}
+\centering
+\includegraphics[width=\textwidth]{probe2.png}
+\end{frame}
 
-\begin{itemize}
-    \item It is possible to send FM/RDS signals with your own transmitter
-    \begin{itemize}
-        \item Possible to make users switch channels with the appropriate flags
-        \item Display arbitrary text on user radio displays
-        \item Let navigation equipment take detours
-        \pause \item But it is illegal (except below 50 nW) \footnote{\tiny{Subcategorie 8.C "Regeling gebruik van frequentieruimte zonder vergunning en zonder meldingsplicht 2015"}}
-    \end{itemize}
-\end{itemize}
-
-
-
+\begin{frame}{Probe Social Engineering}
+\centering
+\includegraphics[width=\textwidth]{omzet.png}
 \end{frame}
 
 %----------------------------------------------------------------------------------
-\section{PoC - 102.3 MHz}
-\begin{frame}{Hardware}
-    \includegraphics[width=9cm]{FMzend.png}
+\section{Wi-Fi deauthentication attack}
+%----------------------------------------------------------------------------------
+\begin{frame}{Back to the deauthentication}
+\centering
+\includegraphics[width=100px]{dewifi.jpg}\footnote{\tiny{https://opensourceforu.com/2015/04/beware-it\%C2\%92s-easy-to-launch-a-wireless-deauthentication-attack/}}
 \end{frame}
 
-\begin{frame}{Code}
-    \includegraphics[width=9cm]{FMcode.png}
+\begin{frame}{What can you do? MitM}
+\centering
+\includegraphics[width=\textwidth]{MinM.png}
 \end{frame}
 
-\begin{frame}{102.3 MHz}
-    \includegraphics[width=9cm]{photo_2018-04-20_10-12-16.jpg}
+\begin{frame}{What can you do? Break hotspot}
+\centering
+\includegraphics[width=\textwidth]{hotel.png}
 \end{frame}
 
 %----------------------------------------------------------------------------------
+\section{News}
+%----------------------------------------------------------------------------------
 
+\begin{frame}{News}
+\centering
+\includegraphics[width=\textwidth]{hotelfcc.png}\footnote{\tine{https://www.usatoday.com/story/money/business/2014/10/03/marriott-fcc-nashville-fined-wifi-blocking/16648695/}}
+\end{frame}
+
+%----------------------------------------------------------------------------------
+\section{PoC MitM attack}
+%----------------------------------------------------------------------------------
+
+\begin{frame}{Wi-Fi deauthentication}
+\centering
+\includegraphics[width=\textwidth]{MinM.png}\\
+aireplay-ng -0 10 -a 40:4E:36:CC:18:A9 -c DC:53:60:1F:27:5A wlan0\\
+\includegraphics[width=\textwidth]{codedauth.png}
+\end{frame}
+
+
+
+\begin{frame}{Wi-Fi MitM attack}
+\centering
+\includegraphics[width=\textwidth]{mitm.jpg}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------
+\section{Questions}
 %----------------------------------------------------------------------------------
 
 \begin{frame}{Questions?}
